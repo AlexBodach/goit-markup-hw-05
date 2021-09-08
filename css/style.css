@@ -131,6 +131,7 @@ body {
 
 .link {
   display: inline-block;
+
   text-decoration-line: none;
   color: var(--secondary-text-color);
 }
@@ -142,11 +143,27 @@ body {
   color: var(--accent-text-color);
   fill: var(--accent-text-color);
 }
+.block-active {
+  position: relative;
+}
 
 .link-active {
   display: inline-block;
   text-decoration-line: none;
   color: var(--accent-text-color);
+}
+
+.link-active::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  /*margin-top: 76px;*/
+  width: 100%;
+  height: 4px;
+  background: #2196f3;
+  border-radius: 2px;
 }
 
 .item:not(:last-child) {
