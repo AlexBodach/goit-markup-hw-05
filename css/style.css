@@ -119,7 +119,6 @@ body {
 
 .nav-contact {
   display: flex;
-
   align-items: center;
   justify-content: center;
 }
@@ -143,12 +142,16 @@ body {
 }
 
 .link:hover .nav-icons,
-.link:focus .nav-icons,
+.link:focus .nav-icons {
+  fill: var(--accent-text-color);
+}
+
 .link:hover,
 .link:focus {
   color: var(--accent-text-color);
-  fill: var(--accent-text-color);
 }
+
+
 .block-active {
   position: relative;  
 }
