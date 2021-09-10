@@ -114,7 +114,7 @@ body {
 .right {
   margin-left: auto;
   display: flex;
-  /*margin-left: 305px;*/
+ 
 }
 
 .nav-contact {
@@ -150,7 +150,7 @@ body {
   fill: var(--accent-text-color);
 }
 .block-active {
-  position: relative;
+  position: relative;  
 }
 
 .link-active {
@@ -182,8 +182,7 @@ body {
 /* Офрмление блока hero*/
 
 .hero {
-  /* background-color: #2f303a;*/
-  color: var(--white-color);
+   color: var(--white-color);
   text-align: center;
 }
 
@@ -372,6 +371,9 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  transition-property: background-color;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
  }
 
 
@@ -380,7 +382,9 @@ body {
   align-items: center;
   justify-content: center;
   fill: #afb1b8;
-  
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-link:hover,
@@ -388,11 +392,6 @@ body {
 .social-link:hover .social-icons,
 .social-link:focus .social-icons {
   background-color: var(--accent-text-color);
-  fill: var(--white-color);
-}
-
-.social-icons:hover,
-.social-icons:focus {
   fill: var(--white-color);
 }
 
@@ -416,7 +415,6 @@ body {
 }
 
 .box-company {
-  /*background: #e5e5e5;*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -425,16 +423,23 @@ body {
   border: 1px solid #afb1b8;
   box-sizing: border-box;
   border-radius: 4px;
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .company-icons {
   width: 100%;
   grid-template: 100%;
   fill: #afb1b8;
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .company-link,
 .company-icons {
-  display: block;
+  display: block; 
 }
 
 .company-link:hover .box-company,
@@ -488,6 +493,7 @@ body {
   display: flex;
   align-items: baseline;
 }
+
 .box-socials {
   margin-left: 70px;
 }
@@ -504,6 +510,7 @@ body {
   text-transform: uppercase;
   color: #ffffff;
 }
+
 .adress-socials {
   display: flex;
 }
@@ -556,8 +563,11 @@ body {
   line-height: 162%;
   text-align: center;
   letter-spacing: 0.03em;
-
+  box-shadow: inset;
   color: #212121;
+  transition-property: background-color, color, box-shadow ;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-fb:focus,
@@ -581,7 +591,7 @@ body {
 .prt {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 50px;
+  margin-top: 50px;  
 }
 
 .caption {
@@ -606,19 +616,21 @@ body {
   margin-bottom: 0;
 }
 
-.list-poster:focus,
-.list-poster:hover {
+.shadow {
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  position: relative;
+  }
+
+.posters:hover .shadow,
+.posters:focus .shadow {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+    1px 4px 6px rgba(0, 0, 0, 0.16); 
 }
 
 .posters {
   text-decoration-line: none;
-}
-
-.posters:hover .box-posters,
-.posters:focus .box-posters {
-  opacity: 1;
 }
 
 .posters:visited {
@@ -645,10 +657,21 @@ body {
   height: 294px;
   position: absolute;
   top: 0;
+  transform: translatey(100%);
+  transition: transform 300ms;
   padding-top: 63px;
-  padding-bottom: 63px;
-  background: rgba(33, 150, 243, 0.9);
-  opacity: 0;
+  padding-bottom: 63px;   
+  background: rgba(33, 150, 243, 0.9);  
+}
+
+.posters:hover .box-posters,
+.posters:focus .box-posters {
+  transform: translatey(0);    
+}
+
+.container-over {
+  overflow: hidden;
+  position: relative;
 }
 
 .text-back {
@@ -659,9 +682,67 @@ body {
   font-weight: 400;
   font-size: 18px;
   line-height: 156%;
-  /* or 156% */
-
   letter-spacing: 0.03em;
-
   color: #ffffff;
+}
+
+
+/*-------------------Модальное окно-----------*/
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition-property: opacity;
+  transition-duration: 300ms;
+  transition-timing-function: linear; 
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.modal {
+  position: absolute;
+  width: 528px;
+  height: 581px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: var(--white-color); 
+}
+
+.modal-close {
+  position: relative;
+}  
+
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background: var(--white-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.close-icon {
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
 }
